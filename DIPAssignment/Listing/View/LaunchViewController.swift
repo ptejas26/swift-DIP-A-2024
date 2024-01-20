@@ -66,8 +66,15 @@ extension LaunchViewController {
 
 	public func navigateToDetailsView(section: Int) {
 		guard let detailsView = ViewUtility.getLaunchDetailsController() else {return}
-		detailsView.viewModel.selectedLaunch = viewModel.returnLaunchData(section: section)
+        let model = viewModel.returnLaunchData(section: section)
+		detailsView.viewModel.selectedLaunch = model
 		detailsView.viewModel.payloadURLs = viewModel.returnPayloadURLs(section: section)
+        let properties: [String: String] = [
+            "position": "\(section)",
+            "launchID": model?.returnLaunchID() ?? "NA",
+            "launchName": model?.returnLaunchName() ?? "NA"
+        ]
+        Analytics.trackEvent("LaunchViewController", withProperties: properties)
 		navigationController?.pushViewController(detailsView, animated: true)
 	}
 
@@ -110,7 +117,6 @@ extension LaunchViewController: UITableViewDataSource {
 extension LaunchViewController: UITableViewDelegate {
 
 	public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        Constant.title
         Analytics.trackEvent("\(Constant.title) - didSelectRowAt")
         navigateToDetailsView(section: indexPath.section)
 	}
@@ -163,6 +169,6 @@ extension LaunchViewController {
 
 	@IBAction private func payloadSwitchChange(_ sender: UISwitch) {
 		viewModel.setFilterStateToDatabaseAndPerformFilter(state: sender.isOn)
-        Crashes.generateTestCrash()
+//        Crashes.generateTestCrash()
 	}
 }
