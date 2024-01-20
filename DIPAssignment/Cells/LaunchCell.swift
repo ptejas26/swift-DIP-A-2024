@@ -12,8 +12,6 @@ public protocol LaunchCellProtocol: AnyObject {
 	func expandCellToShowPayload(indexPath: IndexPath, sender: UIButton)
 }
 
-
-
 public final class LaunchCell: UITableViewCell {
 	
 	@IBOutlet private weak var launchImgView: UIImageView!

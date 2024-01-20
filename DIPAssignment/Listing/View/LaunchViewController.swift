@@ -40,8 +40,7 @@ public final class LaunchViewController: UIViewController {
 		setupUI()
         setupAppCenter()
 		viewModel.delegate = self
-		title = Constant.title
-        Analytics.trackEvent("\(#file) \(#function)")
+        Analytics.trackEvent("\(Constant.title) - viewDidLoad", withProperties: ["fileName" : "LaunchViewController"], flags: .normal)
 	}
     func setupAppCenter() {
         AppCenter.start(services: [
@@ -111,10 +110,10 @@ extension LaunchViewController: UITableViewDataSource {
 extension LaunchViewController: UITableViewDelegate {
 
 	public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        Analytics.trackEvent("\(#file) \(#function)")
+        Constant.title
+        Analytics.trackEvent("\(Constant.title) - didSelectRowAt")
         navigateToDetailsView(section: indexPath.section)
 	}
-
 }
 
 
@@ -146,6 +145,8 @@ extension LaunchViewController: ListingViewModelProtocol {
 extension LaunchViewController: LaunchCellProtocol {
 
 	public func setLaunchAsFavorite(indexPath: IndexPath, favState: Bool) {
+        let favString = favState ? "Favorite" : "Unfavorite"
+        Analytics.trackEvent("\(Constant.title) - \(favString) - \(indexPath.row)")
 		viewModel.setFavoriteLaunch(status: favState, for: indexPath.section)
 	}
 
@@ -162,5 +163,6 @@ extension LaunchViewController {
 
 	@IBAction private func payloadSwitchChange(_ sender: UISwitch) {
 		viewModel.setFilterStateToDatabaseAndPerformFilter(state: sender.isOn)
+        Crashes.generateTestCrash()
 	}
 }

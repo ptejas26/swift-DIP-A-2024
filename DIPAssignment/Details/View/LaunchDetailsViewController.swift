@@ -7,6 +7,7 @@
 
 import UIKit
 import AppCenterAnalytics
+import AppCenterCrashes
 
 public final class LaunchDetailsViewController: UIViewController {
 
@@ -39,8 +40,18 @@ public final class LaunchDetailsViewController: UIViewController {
 		viewModel.delegate = self
 		setupUI()
 		setData()
-        Analytics.trackEvent("\(#file) \(#function)")
+        Analytics.trackEvent("\(Constant.title) - viewDidLoad")
     }
+    
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if Crashes.hasCrashedInLastSession {
+            let alert = UIAlertController(title: "Opps", message: "We appologies for the crash in last session", preferredStyle: .alert)
+            self.present(alert, animated: true)
+        }
+    }
+    
 
 	public override func viewWillAppear(_ animated: Bool) {
 		tableView.reloadData()
@@ -126,6 +137,8 @@ extension LaunchDetailsViewController {
 
 	@IBAction private func favButtonAction(_ sender: UIButton) {
 		let state = toggleFavImage(sender: sender)
+        let favString = state ? "Favorite" : "Unfavorite"
+        Analytics.trackEvent("\(Constant.title) - \(favString) - \(sender.tag)")
 		viewModel.selectedLaunch.setFavoriteLaunch(status: state, launchID: viewModel.selectedLaunch.returnLaunchID())
 	}
 	
