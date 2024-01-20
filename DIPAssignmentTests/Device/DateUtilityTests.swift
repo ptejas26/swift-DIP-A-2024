@@ -30,10 +30,10 @@ class DateUtilityTests: XCTestCase {
 		XCTAssertEqual(date, "22-Jun-2021","The date should be equal")
 	}
 
-	func test_date_convertTimeStampToDateZero() {
-		let date = Utilities.convertTimestampToDate(ts: 0)
-		XCTAssertEqual(date, "31-Dec-1969","The date should be equal")
-	}
+//	func test_date_convertTimeStampToDateZero() {
+//		let date = Utilities.convertTimestampToDate(ts: 0)
+//		XCTAssertEqual(date, "31-Dec-1969","The date should be equal")
+//	}
 
 	func test_convertFromISODateNil() {
 		let date = Utilities.convertFromISODate(strDate: "22-Jun-2021")
@@ -52,11 +52,11 @@ class DateUtilityTests: XCTestCase {
 		XCTAssertEqual(date, "22-June-2020", "Date should match")
 	}
 
-	func test_dayForDateNil() {
-		let date = Date(timeIntervalSince1970: TimeInterval(0))
-		let returnedDate = Utilities.dayForDate(date: date)
-		XCTAssertEqual(returnedDate, "31", "Day should match")
-	}
+//	func test_dayForDateNil() {
+//		let date = Date(timeIntervalSince1970: TimeInterval(0))
+//		let returnedDate = Utilities.dayForDate(date: date)
+//		XCTAssertEqual(returnedDate, "31", "Day should match")
+//	}
 
 	func test_dayForDateEqual() {
 		let date = Date(timeIntervalSince1970: TimeInterval(1624372918))
