@@ -55,8 +55,6 @@ extension LaunchViewController {
 		switchView.addBorder()
 		switchView.dropCorner()
 		setPayloadState()
-        
-        
 	}
 
 	private func setPayloadState() {
@@ -169,6 +167,6 @@ extension LaunchViewController {
 
 	@IBAction private func payloadSwitchChange(_ sender: UISwitch) {
 		viewModel.setFilterStateToDatabaseAndPerformFilter(state: sender.isOn)
-//        Crashes.generateTestCrash()
+        Analytics.trackEvent("payloadSwitch", withProperties: ["Switch Status" : "\(sender.isOn)"], flags: .normal)
 	}
 }
