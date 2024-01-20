@@ -164,7 +164,6 @@ extension LaunchViewController: LaunchCellProtocol {
 }
 
 extension LaunchViewController {
-
 	@IBAction private func payloadSwitchChange(_ sender: UISwitch) {
 		viewModel.setFilterStateToDatabaseAndPerformFilter(state: sender.isOn)
         Analytics.trackEvent("payloadSwitch", withProperties: ["Switch Status" : "\(sender.isOn)"], flags: .normal)

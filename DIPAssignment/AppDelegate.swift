@@ -10,7 +10,7 @@ import AppCenter
 import AppCenterAnalytics
 import AppCenterCrashes
 
-let appCenterKey = "2a2d64ac-0306-4022-a90b-ea8e541b969e"
+let appCenterKey = "8429159a-60df-436e-a3c7-7bf03ddfb519"
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
