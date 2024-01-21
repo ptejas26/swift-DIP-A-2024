@@ -24,7 +24,8 @@ public final class LaunchDetailsViewController: UIViewController {
 			tableView.dataSource = self
 			tableView.delegate = self
 			tableView.separatorStyle = .none
-			tableView.keyboardDismissMode = .interactive
+            tableView.keyboardDismissMode = .interactive
+            tableView.accessibilityIdentifier = AccessibilityIdentifier.detailsTableView.rawValue
 		}
 	}
 
@@ -33,11 +34,12 @@ public final class LaunchDetailsViewController: UIViewController {
 		static let title = "Launch Details"
 	}
 	public var viewModel: DetailViewModel = DetailViewModel()
-	
+
     public override func viewDidLoad() {
         super.viewDidLoad()
 		title = Constant.title
 		viewModel.delegate = self
+        setAccessibilityIds()
 		setupUI()
 		setData()
         Analytics.trackEvent("\(Constant.title) - viewDidLoad")
@@ -111,6 +113,14 @@ extension LaunchDetailsViewController {
 		}
 	}
 
+    private func setAccessibilityIds() {
+        launchImgView.accessibilityIdentifier = AccessibilityIdentifier.launchImgView.rawValue
+        launchNameLabel.accessibilityIdentifier = AccessibilityIdentifier.launchNameLabel.rawValue
+        launchDateTimeLabel.accessibilityIdentifier = AccessibilityIdentifier.launchDateTimeLabel.rawValue
+        launchFlightNoLabel.accessibilityIdentifier = AccessibilityIdentifier.launchFlightNoLabel.rawValue
+        launchPayloadCountLabel.accessibilityIdentifier = AccessibilityIdentifier.launchPayloadCountLabel.rawValue
+        makeFavBtn.accessibilityIdentifier = AccessibilityIdentifier.makeFavBtn.rawValue
+    }
 }
 
 extension LaunchDetailsViewController: UITableViewDataSource, UITableViewDelegate {

@@ -29,7 +29,8 @@ public final class LaunchViewController: UIViewController {
 			tableView.delegate = self
 			tableView.separatorStyle = .none
 			tableView.keyboardDismissMode = .interactive
-			tableView.contentInset.bottom = CGFloat(100)
+            tableView.contentInset.bottom = CGFloat(100)
+            tableView.accessibilityIdentifier = AccessibilityIdentifier.tableView.rawValue
 		}
 	}
 
@@ -65,6 +66,7 @@ extension LaunchViewController {
 	private func setPayloadState() {
 		let state = viewModel.getFilterStateFromDatebaseAndPerformFilter()
 		payloadFilterSwitch.setOn(state, animated: true)
+        payloadFilterSwitch.accessibilityIdentifier = AccessibilityIdentifier.switches.rawValue
 	}
 
 	public func navigateToDetailsView(section: Int) {
