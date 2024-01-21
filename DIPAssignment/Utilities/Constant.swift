@@ -27,5 +27,16 @@ public struct Constant {
 	}
 }
 
-
-
+enum AccessibilityIdentifier: String {
+    case tableView = "launch_tableView"
+    case cell = "cell"
+    case switches = "filterSwitches"
+    
+    case detailsTableView = "details_tableView"
+    case launchImgView
+    case launchNameLabel
+    case launchDateTimeLabel
+    case launchFlightNoLabel
+    case launchPayloadCountLabel
+    case makeFavBtn
+}

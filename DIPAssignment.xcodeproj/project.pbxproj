@@ -55,6 +55,7 @@
 		55F114112679F62A00493AB5 /* Failure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F114102679F62A00493AB5 /* Failure.swift */; };
 		55F114232679F6CD00493AB5 /* CustomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F114222679F6CD00493AB5 /* CustomType.swift */; };
 		8D047A2894348E8635F99F90 /* Pods_DIPAssignment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09D8375CAED405A919607E1 /* Pods_DIPAssignment.framework */; };
+		9680066D2B5C8F5200050513 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F113CF2679EF1A00493AB5 /* Constant.swift */; };
 		D928A374AFBE8FD852E74871 /* Pods_DIPAssignmentTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F92AD577B62D676A2D2816E8 /* Pods_DIPAssignmentTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -729,6 +730,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55F113982678DA9300493AB5 /* DIPAssignmentUITests.swift in Sources */,
+				9680066D2B5C8F5200050513 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
