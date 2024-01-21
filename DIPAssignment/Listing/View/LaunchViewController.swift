@@ -36,12 +36,17 @@ public final class LaunchViewController: UIViewController {
 	public override func viewDidLoad() {
 		super.viewDidLoad()
 		SpinnerManager.showLoader(with: self.view)
-		viewModel.getListingData()
 		setupUI()
         setupAppCenter()
 		viewModel.delegate = self
         Analytics.trackEvent("\(Constant.title) - viewDidLoad", withProperties: ["fileName" : "LaunchViewController"], flags: .normal)
 	}
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.getListingData()
+    }
+    
     func setupAppCenter() {
         AppCenter.start(services: [
             Crashes.self
